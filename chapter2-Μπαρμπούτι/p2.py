@@ -1,13 +1,18 @@
 import random
 
-print ("Πάτα έντερ για να πέσουν τα ζάρια", end=" ")
-input()
+def rollDice():
+    print ("Πάτα έντερ για να πέσουν τα ζάρια", end=" ")
+    input()
 
-dice1 = random.randint(1,6)
-dice2 = random.randint(1,6)
+    dice1 = random.randint(1,6)
+    dice2 = random.randint(1,6)
 
-roll = dice1 + dice2
-print( "Εριξες", dice1, dice2, "=", roll)
+    roll = dice1 + dice2
+    print( "Εριξες", dice1, dice2, "=", roll)
+
+    return roll
+
+roll = rollDice()
 
 if roll==7 or roll==11:
     print("Κέρδισες με την πρώτη!")
@@ -16,14 +21,7 @@ elif roll<=3 or roll==12:
 else:
     while True:
         print("Ξαναρίξε! Πρέπει να φέρεις", roll)
-        print ("Πάτα έντερ για να πέσουν τα ζάρια", end=" ")
-        input()
-
-        dice1 = random.randint(1,6)
-        dice2 = random.randint(1,6)
-
-        newroll = dice1 + dice2
-        print( "Εριξες", dice1, dice2, "=", roll)
+        newroll = rollDice()
         if newroll==roll:
             print("Κέρδισες!")
             break
