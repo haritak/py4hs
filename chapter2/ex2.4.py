@@ -1,19 +1,18 @@
+#WG37 - Ηρακλείου
 import random
 
-while True:
-    u=int(input("Δώσε 1 για Πέτρα, 2 για Ψαλίδι ή 3 για Χαρτί"))
-    c=random.randint(1,3)
-    choices = ["","Πέτρα","Ψαλίδι","Χαρτί"]
-
-    print("Εγώ διάλεξα", choices[c])
-
-    if (u==c):
-        print("ισοπαλία")
-    elif u==3 and c==1:
-        print("κέρδισες")
+game = True
+while game:
+    choice=int(input("Διάλεξε 1-Πέτρα, 2-Ψαλίδι ή 3-Χαρτί"))
+    if choice!=1 and choice!=2 and choice!=3:
+        game=False
     else:
-        if u not in [1,2,3]:
-            break
-        print("έχασες")
-
-""" Δεν είναι σωστή η λογική αλλά το παρατάω...
+        mychoice=random.randint(1,3)
+        print("Εγώ διάλεξα ", mychoice)
+        if (mychoice==1 and choice==2) or (mychoice==2 and choice==3) or (mychoice==3 and choice==1):
+            print("Εγώ κερδίζω!")
+        elif (choice==1 and mychoice==2) or (choice==2 and mychoice==3) or (choice==3 and mychoice==1):
+            print("Εσύ κερδίζεις!")
+        else:
+            print("Ισοπαλία")
+    print("Συνεχίζουμε;...")
