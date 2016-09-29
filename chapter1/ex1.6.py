@@ -1,33 +1,35 @@
-h1=h2=h3=48/3
-print(h1, " ", h2, " ", h3,"\n")
+swros1=48/3
+swros2=48/3
+swros3=48/3
+print(swros1, " ", swros2, " ", swros3,"\n")
 
 
-m=h1/2
-h3=h3+m
-h1=h1-m
+gia_metafora=swros1/2
+swros3=swros3+gia_metafora
+swros1=swros1-gia_metafora
 
-m=h3/2
-h3=h3-m
-h2=h2+m
+gia_metafora=swros3/2
+swros3=swros3-gia_metafora
+swros2=swros2+gia_metafora
 
-m=h2/2
-h2=h2-m
-h1=h1+m
+gia_metafora=swros2/2
+swros2=swros2-gia_metafora
+swros1=swros1+gia_metafora
 
 
-print(h1, " ", h2, " ", h3)
+print(swros1, " ", swros2, " ", swros3)
 print("\n")
 
-m=h2
-h1=h1-m
-h2=h2+m
-m=h3
-h2=h2-m
-h3=h3+m
-m=h1
-h3=h3-m
-h1=h1+m
+gia_metafora=swros2
+swros1=swros1-gia_metafora
+swros2=swros2+gia_metafora
+gia_metafora=swros3
+swros2=swros2-gia_metafora
+swros3=swros3+gia_metafora
+gia_metafora=swros1
+swros3=swros3-gia_metafora
+swros1=swros1+gia_metafora
 
-print(h1, " ", h2, " ", h3)
+print(swros1, " ", swros2, " ", swros3)
 print("\n")
 
