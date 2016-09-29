@@ -1,3 +1,4 @@
+#WG37 - Ηρακλείου
 import random
 
 def flip():
