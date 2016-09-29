@@ -1,10 +1,10 @@
+#WG37 - Ηρακλείου
 a=int(input("Δώσε δευτερόλεπτα"))
 
-s=a%60
-a=a//60
-m=a%60
-a=a//60
-h=a%60
+hours=a//(60*60)
+a=a%(60*60)
+minutes=a//60
+seconds=a%60
 
-print(h,":",m,":",s)
+print(hours,":",minutes,":",seconds)
 
