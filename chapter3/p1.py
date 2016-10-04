@@ -5,15 +5,21 @@ secret = random.randint(1,32)
 print(secret)
 
 found = False
-while not found:
+tries = 4
+while not found and tries>=0:
     print('Μάντεψε τον αριθμό 1 εως 32')
     number=int(input())
     if number!=secret:
         print("Λάθος")
+        print("Απομένουν", tries, "προσπάθειες")
+        tries-=1
     else:
         print("Σωστά!")
         #άμεση έξοδος απο την επανάληψη
         found = True
+if not found:
+    print("Ηταν ο", secret)
+
 
 
 
