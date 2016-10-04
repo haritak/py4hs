@@ -19,7 +19,7 @@ high=32
 
 secret = random.randint(low, high)
 #ΓΙΑ ΕΛΕΓΧΟ : εμφάνιση μυστικού αριθμού
-print(secret)
+#print(secret)
 
 tries = 4
 number=readNumber(low, high)
