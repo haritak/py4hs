@@ -14,7 +14,7 @@ def readNumber(a,b):
 
     return num
 
-def showMessage(number, low, high):
+def showMessage(number, secret, low, high):
     if number>secret:
         print("Λάθος, είναι μικρότερος")
     elif number<secret:
@@ -32,7 +32,7 @@ tries = 4
 number=readNumber(low, high)
 #number=midNumber(low, high)
 while number!=secret and tries>1:
-    showMessage(number, low, high)
+    showMessage(number, secret, low, high)
     if number>secret:
         high = number-1
         print("Απομένουν", tries, "προσπάθειες")
@@ -49,7 +49,7 @@ if number!=secret:
         high = number-1
     elif number<secret:
         low=number+1
-    showMessage(number, low, high)
+    showMessage(number, secret, low, high)
     print("Τελευταία προσπάθεια!")
     number = readNumber(low, high)
 
