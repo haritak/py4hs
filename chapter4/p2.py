@@ -26,6 +26,23 @@ def readMatches(p,m):
 def randomMatches(m):
     return random.randint(1,maxMatches(m))
 
+def computeMatches(m):
+    mod=m%4
+    if mod==0:
+        return 3
+    elif mod==1:
+        return randomMatches(m)
+    elif mod==2:
+        return 1
+    else:
+        return 2
+
+    mod=(m-1)%4
+    if mod==0:
+        return randomMatches(m)
+    else:
+        return mod
+
 
 matches=random.randint(7,21)
 
@@ -37,7 +54,8 @@ player=1
 
 while matches>0:
     if player==computer:
-        removed = randomMatches(matches)
+        #removed = randomMatches(matches)
+        removed = computeMatches(matches)
         print("Ο υπολογιστής πήρε", removed, "σπίρτα")
     else:
         removed=readMatches(player,matches)
