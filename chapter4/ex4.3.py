@@ -17,12 +17,13 @@ def readMatches(p,m):
     if limit>1:
         print("Παίκτη", player, "πόσα σπίρτα θέλεις να βγάλεις;")
         num=int(input())
-        while True:
-            print("Πάρε από ένα μέχρι",limit,"σπίρτα")
-            print("Παίκτη", player, "πόσα σπίρτα θέλεις να βγάλεις;")
-            num=int(input())
-            if (num>=1 and num<=limit):
-                break
+        if (num<1 or num>limit):
+            while True:
+                print("Πάρε από ένα μέχρι",limit,"σπίρτα")
+                print("Παίκτη", player, "πόσα σπίρτα θέλεις να βγάλεις;")
+                num=int(input())
+                if (num>=1 and num<=limit):
+                    break
     else:
         print("Παίκτη", player, "αναγκαστικά πρέπει να παρεις το τελευταίο σπίρτο.")
         num=1
