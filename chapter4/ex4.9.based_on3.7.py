@@ -2,6 +2,7 @@ import random
 
 low=[0,1,1]
 high=[0,32,32]
+tries=[0,4,4]
 
 def getFeedback():
     print("1...Για μικρότερος")
@@ -49,16 +50,23 @@ while not finished[1] or not finished[2]:
 
 
     if not finished[player]:
+        tries[player]-=1
+
         if player==computer:
-            print("Ειναι η σειρά μου")
+            print("Ειναι η σειρά μου.")
+            if tries[player]>0: 
+                print("Εχω άλλες", tries[player], "προσπάθειες.")
+            else:
+                print("Είναι η τελευταία μου προσπάθεια!")
+
             a=random.randint(low[player],high[player])
             print("Διάλεξα το ",a)
             f=getFeedback()
 
             if f!=3:
-                if winner != 0:
+                if winner != 0 or tries[player]==0:
                     print("Εχασα...")
-                    break
+                    finished[player] = True
 
                 if f==1:
                     high[player]=a;
@@ -72,12 +80,16 @@ while not finished[1] or not finished[2]:
 
 
         else:
-            print("Είναι η δική σου σειρά")
+            print("Είναι η δική σου σειρά.")
+            if tries[player]>0: 
+                print("Εχεις άλλες", tries[player], "προσπάθειες.")
+            else:
+                print("Είναι η τελευταία σου προσπάθεια!")
             a=readNumber(low[player], high[player])
             if a != secret:
-                if winner != 0:
+                if winner != 0 or tries[player]==0:
                     print("Εχασες!")
-                    break
+                    finished[player] = True
                 dif = showMessage(a, secret, low[player], high[player])
                 if dif<0:
                     high[player]=high[player]+dif
