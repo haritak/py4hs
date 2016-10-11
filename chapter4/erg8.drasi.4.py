@@ -2,9 +2,7 @@ import getpass
 import time
 
 mikosSkoylikioy=5
-mikosDiadromis=70
-
-
+mikosDiadromis=15
 
 def printRepeatedChar(char, times):
     c=0
@@ -31,6 +29,21 @@ def typwseTaSkoulikia(th1, on1, th2, on2):
     printSkouliki()
     printEndFlag(th2)
 
+def posoThes(onoma):
+    print(onoma, ",πόσο βάζεις; (1-6, απλά βάλε νούμερο και πάτα εντερ, δεν θα φανεί!);")
+    while True:
+        a=int(getpass.getpass(""))
+        if a>=1 and a<=6:
+            return a
+
+def isWinner(onoma, thesi, diadromi, skoyliki):
+    iswinner = (thesi+skoyliki>=diadromi)
+    if iswinner:
+        print("Κέρδισε ο ", onoma, ". Έφτασε πρώτος")
+
+    return iswinner
+
+
 onoma1 = input("αρχικά πρώτου παίκτη:")
 onoma2 = input("αρχικά δεύτερου παίκτη:")
 
@@ -41,10 +54,8 @@ typwseTaSkoulikia(thesi1, onoma1, thesi2, onoma2)
 
 while True:
 
-    print(onoma1)
-    a=int(getpass.getpass("Πόσο βάζεις (δεν θα φανεί στην οθόνη);"))
-    print(onoma2)
-    b=int(getpass.getpass("Πόσο βάζεις (δεν θα φανεί στην οθόνη);"))
+    a=posoThes(onoma1)
+    b=posoThes(onoma2)
 
     if (a==b):
         print("Διαλέξατε το ίδιο, ακυρώνεστε!")
@@ -54,21 +65,29 @@ while True:
         time.sleep(1)
         thesi1 += a
         typwseTaSkoulikia(thesi1, onoma1, thesi2, onoma2)
+        if isWinner(onoma1, thesi1, mikosDiadromis, mikosSkoylikioy):
+            break
         print("")
         print("Επαιξε, τώρα παίζει ο ", onoma2)
         time.sleep(3)
         thesi2 += b
         typwseTaSkoulikia(thesi1, onoma1, thesi2, onoma2)
+        if isWinner(onoma2, thesi2, mikosDiadromis, mikosSkoylikioy):
+            break
     else:
         print("Παίζει πρώτα ο ", onoma2, " γιατί διάλεξε το μικρότερο")
         time.sleep(1)
         thesi2 += b
         typwseTaSkoulikia(thesi1, onoma1, thesi2, onoma2)
+        if isWinner(onoma2, thesi2, mikosDiadromis, mikosSkoylikioy):
+            break
         print("")
         print("Επαιξε, τώρα παίζει ο ", onoma1)
         time.sleep(3)
         thesi1 += a
         typwseTaSkoulikia(thesi1, onoma1, thesi2, onoma2)
+        if isWinner(onoma1, thesi1, mikosDiadromis, mikosSkoylikioy):
+            break
 
 
 
