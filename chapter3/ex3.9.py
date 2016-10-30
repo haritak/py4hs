@@ -7,9 +7,13 @@ def flipBiased(p):
     else:
         return 1
 
-def flipFair():
-    return random.randint(0,1)
-
+def flipFair(p):
+    while True:
+        n1 = flipBiased(p)
+        n2 = flipBiased(p)
+        if n1!=n2:
+            return n1
+        
 print("Δώσε την τιμή του p (πιθανότητα στα 100 να έχει 0)")
 p=int(input())
 
@@ -23,7 +27,7 @@ countZeros_biased=0
 while e>0:
     if flipBiased(p)==0:
         countZeros_biased+=1
-    if flipFair()==0:
+    if flipFair(p)==0:
         countZeros_fair+=1
     e-=1
 
