@@ -89,22 +89,27 @@ def findByNeighbours(planets):
     nbPlanets = len(planets)
     position = random.randint(0, nbPlanets-1)
     planet = planets[ position ]
+    answers = planets.copy()
     print("Ποιός πλανήτης είναι ", end=" ")
     if position!=0:
         print("μετά τον πλανήτη ", planets[position-1], end=" ")
+        answers.remove(planets[position-1])
         if position!=nbPlanets-1:
             print("και", end=" ")
 
     if position!=nbPlanets-1:
         print("πριν τον πλανήτη ", planets[position+1], end=" ")
+        answers.remove(planets[position+1])
 
     print(";")
-    multipleChoice(4, planets, planet)
+    multipleChoice(4, answers, planet)
 
 
 
-print("\nΕρώτηση 3")
-findByNeighbours(planets)
+
+while True:
+    print("\nΕρώτηση 3")
+    findByNeighbours(planets)
 
 
 
