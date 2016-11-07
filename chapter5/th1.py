@@ -85,6 +85,29 @@ def findByPosition(planets):
             sep="")
     multipleChoice(4, planets, planet)
 
+def findByNeighbours(planets):
+    nbPlanets = len(planets)
+    position = random.randint(0, nbPlanets-1)
+    planet = planets[ position ]
+    print("Ποιός πλανήτης είναι ", end=" ")
+    if position!=0:
+        print("μετά τον πλανήτη ", planets[position-1], end=" ")
+        if position!=nbPlanets-1:
+            print("και", end=" ")
+
+    if position!=nbPlanets-1:
+        print("πριν τον πλανήτη ", planets[position+1], end=" ")
+
+    print(";")
+    multipleChoice(4, planets, planet)
+
+
+
+print("\nΕρώτηση 3")
+findByNeighbours(planets)
+
+
+
 
 
 if addPluto():
