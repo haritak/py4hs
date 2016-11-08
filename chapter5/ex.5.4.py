@@ -46,6 +46,19 @@ def getAnswer(choices):
     return answer
 
 
+def question5():
+    today_idx = random.randint(7,14)
+    previous_idx = random.randint(0,7)
+
+    print("Αν σήμερα είναι ",
+            three_weeks[today_idx],
+            " πόσες μέρες έχουν περάσει απο την προηγούμενη ",
+            three_weeks[previous_idx],
+            ";", sep="")
+    days = int(input())
+
+    return days==today_idx-previous_idx
+
 def question4():
     today_idx = random.randint(7,14)
 
@@ -115,6 +128,10 @@ def question1():
 
 
 
+if question5():
+    print("Σωστά")
+else:
+    print("Λάθος")
     
 if question4():
     print("Σωστά")
