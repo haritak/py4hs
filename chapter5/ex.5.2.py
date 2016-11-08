@@ -26,11 +26,14 @@ def select(nbChoices, possible, correct):
     answers.append( correct )
     while len(answers)<4:
         toAdd = random.sample(possible, 1)
-        if toAdd not in answers: #αυτό δεν το λέει η ερώτηση, ίσως είναι
-                                 #το μειονέκτημα που εννοεί.
-            answers.append( toAdd )
 
-    return random.shuffle( answers )
+        #αυτό δεν το λέει η ερώτηση, ίσως είναι
+        #το μειονέκτημα που εννοεί.
+        if toAdd[0] not in answers: 
+            answers.append( toAdd[0] )
+
+    random.shuffle( answers )
+    return answers
 
 
 def showMultiple(answers):
