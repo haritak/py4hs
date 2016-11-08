@@ -105,11 +105,45 @@ def findByNeighbours(planets):
     multipleChoice(4, answers, planet)
 
 
+def closestSun(planets):
+    nbPlanets = len(planets)
+    position = random.randint(0, nbPlanets-4)
+    planet = planets[position]
+    following = planets[position:len(planets)] # ή following=planets[position:]
+
+    print("Ποιός πλανήτης είναι πιο κοντά στον Ήλιο;")
+    multipleChoice(4, following, planet)
+
+
+
+def between(planets):
+    nbPlanets=len(planets)
+    start = random.randint(0, nbPlanets-5)
+    stop = start+4
+
+    between = planets[start+1:stop]
+    out = planets[:start] + planets[stop+1:]
+    correct = random.choice(out)
+
+    print("Ποιόν πλανήτη δε θα συναντήσουμε",
+            "ταξιδεύοντας απο τον πλανήτη",
+            planets[start], "και φτάνοντας",
+            "στον πλανήτη", planets[stop],";", sep=" ")
+    multipleChoice(4, between+[correct], correct)
+
+
 
 
 while True:
-    print("\nΕρώτηση 3")
-    findByNeighbours(planets)
+  print("\nΕρώτηση 5")
+  between(planets)
+
+
+print("\nΕρώτηση 4")
+closestSun(planets)
+
+print("\nΕρώτηση 3")
+findByNeighbours(planets)
 
 
 
