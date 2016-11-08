@@ -46,6 +46,30 @@ def getAnswer(choices):
     return answer
 
 
+def question6():
+    startpoint = random.randint(7,14)
+    days_in_order = three_weeks[startpoint:startpoint+4]
+    days_in_order_messed_indexes = [1,2,3,4]
+    random.shuffle(days_in_order_messed_indexes)
+    days_in_order_messed=[]
+    for i in days_in_order_messed_indexes:
+        days_in_order_messed.append( days_in_order[ i-1 ])
+
+
+    showChoices("Βάλτε τις παρακάτω ημέρες στην σωστή σειρά.",
+            days_in_order_messed)
+    print("Γράψε τα νούμερα των ημερών στην σωστή σειρά διαχωρίζοντάς τα με κενό.")
+    answer=input()
+    answer=answer.split(" ")
+    i=0
+    for a in answer:
+        if days_in_order_messed_indexes[int(a)-1]!=i+1:
+            return False
+        i+=1
+
+
+    return True
+
 def question5():
     today_idx = random.randint(7,14)
     previous_idx = random.randint(0,7)
@@ -127,6 +151,10 @@ def question1():
     return answer==correct[0]
 
 
+if question6():
+    print("Σωστά")
+else:
+    print("Λάθος")
 
 if question5():
     print("Σωστά")
