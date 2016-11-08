@@ -20,6 +20,7 @@ def select(nbChoices, possible, correct):
     correct: σωστή απάντηση
     '''
 
+    #Μειονέκτημα: θα καθυστερήσει λίγο παραπάνω
     answers = []
     while correct not in answers:
         random.shuffle( possible )
