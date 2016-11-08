@@ -132,11 +132,41 @@ def between(planets):
     multipleChoice(4, between+[correct], correct)
 
 
+def outOfOrder(planets):
+    nbPlanets=len(planets)
+    start = random.randint(0, nbPlanets-5)
+    fourPlanets = planets[start:start+4]
+    shuffled = fourPlanets.copy()
+    random.shuffle( shuffled )
+
+    print("Βάλε τους πλανήτες με την σωστή σειρά:")
+    showMultiple(shuffled)
+    print("")
+    print("Δώσε τέσσερεις αριθμούς με κενά ανάμεσά τους")
+    answer=input().split()
+
+    correct=[]
+    for planet in fourPlanets:
+        position = shuffled.index(planet) + 1
+        correct.append( str(position) )
+
+    if answer==correct:
+        print( "Μπράβο η σειρά είναι σωστή")
+    else:
+        print("Η σωστή σειρά είναι :")
+        print(correct)
+
+
+
+
 
 
 while True:
-  print("\nΕρώτηση 5")
-  between(planets)
+  print("\nΕρώτηση 6")
+  outOfOrder(planets)
+
+print("\nΕρώτηση 5")
+between(planets)
 
 
 print("\nΕρώτηση 4")
