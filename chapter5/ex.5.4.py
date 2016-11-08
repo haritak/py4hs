@@ -1,4 +1,6 @@
 import random
+import datetime
+
 
 '''
 Ασκηση 5.4
@@ -16,6 +18,10 @@ Mερικές ενδεικτικές ερωτήσεις:
 workdays = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή"]
 weekend = ["Σάββατο", "Κυριακή"]
 weekdays = workdays + weekend
+three_weeks = weekdays*3
+
+daypredicate = [ "αύριο", "μεθαύριο", "χθές", "προχθές"]
+daypredicate_increment = [ 1, 2, -1, -2]
 
 def showChoices(message, choices):
     print("")
@@ -39,19 +45,44 @@ def getAnswer(choices):
 
     return answer
 
-def question1():
-    correct = random.sample(weekend,1)
-    choices = random.sample(workdays, 3) + correct
-    random.shuffle(choices)
-    showChoices("Ποιά μέρα απο τις παρακάτω δεν πάμε σχολείο;",
-            choices)
 
-    answer = getAnswer(choices)
-    return answer==correct[0]
+def question4():
+    today_idx = random.randint(7,14)
 
+    afterbefore = random.randint(-7,+7)
+    correct_index = today_idx+afterbefore
 
+    message = "είναι μετά απο " + str(afterbefore)
+    if afterbefore<0:
+        message = "ήταν πριν απο " + str(abs(afterbefore))
+
+    showChoices("Αν σήμερα είναι "+three_weeks[today_idx]+" τότε τί μέρα "+message+" μέρες;", 
+            weekdays)
+    answer=getAnswer(weekdays)
+
+    return answer==three_weeks[correct_index]
+
+def question3():
+    pi = random.randint(0, len(daypredicate))
+
+    message = daypredicate[pi]
+    if daypredicate_increment[pi]>0:
+        message = "θα είναι "+message
+    else:
+        message = "ήταν "+message
+
+    today = datetime.datetime.today().weekday()
+    correct_index = 7+today+daypredicate_increment[pi]
+
+    random_weekdays = weekdays.copy()
+    random.shuffle( random_weekdays )
+    showChoices("Ποιά μέρα " +message+";", random_weekdays)
+    answer=getAnswer(random_weekdays)
+
+    return answer==three_weeks[correct_index]
+
+    
 def question2(after=True):
-    three_weeks = weekdays*3
     correct_index = random.randint(7,14)
 
     message='πριν'
@@ -72,8 +103,28 @@ def question2(after=True):
 
     return answer==three_weeks[correct_index]
 
-    
+def question1():
+    correct = random.sample(weekend,1)
+    choices = random.sample(workdays, 3) + correct
+    random.shuffle(choices)
+    showChoices("Ποιά μέρα απο τις παρακάτω δεν πάμε σχολείο;",
+            choices)
 
+    answer = getAnswer(choices)
+    return answer==correct[0]
+
+
+
+    
+if question4():
+    print("Σωστά")
+else:
+    print("Λάθος")
+
+if question3():
+    print("Σωστά")
+else:
+    print("Λάθος")
 
 
 if question2():
